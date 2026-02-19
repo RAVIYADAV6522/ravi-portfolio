@@ -3,6 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* warm gold grid (subtle luxury accent) */
+  /* rgba(255,190,60,0.10) — warm gold with low alpha; background-size increased for airiness */
+  --grid-color: rgba(255, 190, 60, 0.1);
+  --bg-radial-top: #f5f5f5;
+  --bg-radial-bottom: #f9fafb;
+  /* Surface / card backgrounds (use throughout components instead of hard-coded bg-white/90) */
+  --surface: rgba(255, 255, 255, 0.9);
 }
 
 @theme inline {
@@ -12,15 +19,51 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Note: dark mode removed for now; site will use light theme variables only. */
+/* If you re-enable dark mode later, re-add a dark-theme block and prefers-color-scheme fallback. */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    var(--font-geist-sans),
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Text",
+    "SF Pro Display",
+    "Segoe UI",
+    sans-serif;
+}
+
+.grid-bg {
+  background-color: var(--background);
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px),
+    radial-gradient(circle at top, var(--bg-radial-top), transparent 55%),
+    radial-gradient(circle at bottom, var(--bg-radial-bottom), transparent 55%);
+  background-size:
+    36px 36px,
+    36px 36px,
+    auto,
+    auto;
+  background-attachment: fixed;
+}
+
+/* Reusable surface utility to replace hard-coded white backgrounds in components
+   Use this class on nav, cards, modals so they adapt to theme */
+.surface {
+  background-color: var(--surface);
+  color: var(--foreground);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.surface--transparent {
+  background-color: color-mix(in srgb, var(--surface) 70%, transparent);
 }
