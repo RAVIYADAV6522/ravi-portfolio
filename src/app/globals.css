@@ -124,4 +124,24 @@ body {
   animation: scroll-marquee 40s linear infinite;
 }
 
+@keyframes perimeter-run {
+  /* Constant speed calculation assuming roughly 2:1 container aspect ratio */
+  /* Top edge (fast direction, long distance) */
+  0% { left: 0%; top: 0%; transform: translate(-50%, -50%); }
+  33.3% { left: 100%; top: 0%; transform: translate(-50%, -50%); }
+  
+  /* Right edge (short distance, needs less time) */
+  50% { left: 100%; top: 100%; transform: translate(-50%, -50%); }
+  
+  /* Bottom edge */
+  83.3% { left: 0%; top: 100%; transform: translate(-50%, -50%); }
+  
+  /* Left edge */
+  100% { left: 0%; top: 0%; transform: translate(-50%, -50%); }
+}
+
+.animate-perimeter-run {
+  animation: perimeter-run 40s linear infinite;
+}
+
 
