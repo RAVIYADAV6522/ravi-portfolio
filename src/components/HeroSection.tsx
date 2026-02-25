@@ -67,7 +67,7 @@ export function HeroSection() {
               
               <div className="glass relative h-56 w-56 overflow-hidden rounded-full border-4 border-white shadow-xl sm:h-72 sm:w-72 lg:h-80 lg:w-80">
                 <Image
-                  src="/profile.jpeg"
+                  src="/profile1.jpeg"
                   alt="Ravi Yadav"
                   fill
                   sizes="(max-width: 768px) 224px, 320px"
