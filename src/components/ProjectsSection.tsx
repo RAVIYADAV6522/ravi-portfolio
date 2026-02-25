@@ -50,43 +50,9 @@ export function ProjectsSection() {
       links: [{ label: "GitHub", href: "#", type: "github" }],
     },
 
-    {
-      title: "Floor Detection using SVM",
-      description:
-        "Implemented floor vs. non-floor pixel/region classification on indoor images using the CMM dataset and Support Vector Machines. Compared three feature-engineering approaches: RGB-only pixels, RGB + spatial coordinates, and KMeans-based region-level features. Method 3 (KMeans regions) achieved ~92.5% test accuracy with the fastest training time.",
-      image: "/projects/floor-detection.png",
-      tags: [
-        "Python",
-        "SVM",
-        "scikit-learn",
-        "KMeans",
-        "Computer Vision",
-        "COCO Annotations",
-      ],
-      links: [
-        { label: "GitHub", href: "#", type: "github" },
-        { label: "Report", href: "#", type: "report" },
-      ],
-    },
 
-    {
-      title: "Floor Detection using SVM",
-      description:
-        "Implemented floor vs. non-floor pixel/region classification on indoor images using the CMM dataset and Support Vector Machines. Compared three feature-engineering approaches: RGB-only pixels, RGB + spatial coordinates, and KMeans-based region-level features. Method 3 (KMeans regions) achieved ~92.5% test accuracy with the fastest training time.",
-      image: "/projects/floor-detection.png",
-      tags: [
-        "Python",
-        "SVM",
-        "scikit-learn",
-        "KMeans",
-        "Computer Vision",
-        "COCO Annotations",
-      ],
-      links: [
-        { label: "GitHub", href: "#", type: "github" },
-        { label: "Report", href: "#", type: "report" },
-      ],
-    },
+
+  
     {
       title: "Monte Carlo Simulation for Stock Portfolio",
       description:
@@ -127,76 +93,84 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        {/* Premium Horizontal Slider Container */}
-        {/* Note: scrollbar hiding classes added for a clean look */}
-        <div className="group/carousel mt-16 flex w-full snap-x snap-mandatory gap-6 overflow-x-auto pb-16 pt-10 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-8 lg:mt-24 lg:px-4 [&::-webkit-scrollbar]:hidden">
-          {projects.map((project, idx) => {
-            return (
-              <article
-                key={project.title}
-                className="group relative flex w-[85vw] shrink-0 snap-center snap-always flex-col overflow-hidden rounded-[2.5rem] border border-zinc-200 bg-white shadow-xl transition-all duration-500 ease-out sm:w-[360px] md:w-[400px] lg:group-hover/carousel:opacity-50 lg:hover:!scale-[1.03] lg:hover:!opacity-100 lg:hover:z-50 lg:hover:-translate-y-4 lg:hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)]"
-              >
-                {/* Image Container */}
-                <div className="relative h-64 overflow-hidden bg-zinc-100 sm:h-72">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  
-                  {/* Floating Links */}
-                  <div className="absolute top-4 right-4 flex flex-col gap-2">
-                    {project.links.map((link) => (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        className="glass flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold text-zinc-900 shadow-xl transition-all hover:scale-110 active:scale-95"
-                      >
-                        {link.type === "github" ? (
-                          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-                          </svg>
-                        ) : (
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /><path d="M17 3v8H7V3" />
-                          </svg>
-                        )}
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
+        {/* Infinite Scrolling Marquee Container */}
+        <div 
+          className="group/carousel mt-16 w-full overflow-hidden pb-16 pt-10 lg:mt-24"
+          style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
+        >
+          <div className="flex w-max custom-animate-scroll hover:[animation-play-state:paused]">
+            {[...Array(2)].map((_, arrayIdx) => (
+              <div key={arrayIdx} className="flex shrink-0 gap-6 pr-6 sm:gap-8 sm:pr-8">
+                {projects.map((project, idx) => {
+                  return (
+                    <article
+                      key={project.title + arrayIdx}
+                      className="group relative flex w-[85vw] shrink-0 flex-col overflow-hidden rounded-[2.5rem] border border-zinc-200 bg-white shadow-xl transition-all duration-500 ease-out sm:w-[360px] md:w-[400px] lg:group-hover/carousel:opacity-50 lg:hover:!scale-[1.03] lg:hover:!opacity-100 lg:hover:z-50 lg:hover:-translate-y-4 lg:hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)]"
+                    >
+                      {/* Image Container */}
+                      <div className="relative h-64 overflow-hidden bg-zinc-100 sm:h-72">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                        
+                        {/* Floating Links */}
+                        <div className="absolute top-4 right-4 flex flex-col gap-2">
+                          {project.links.map((link) => (
+                            <a
+                              key={link.label}
+                              href={link.href}
+                              className="glass flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold text-zinc-900 shadow-xl transition-all hover:scale-110 active:scale-95"
+                            >
+                              {link.type === "github" ? (
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                                </svg>
+                              ) : (
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /><path d="M17 3v8H7V3" />
+                                </svg>
+                              )}
+                              {link.label}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
 
-                {/* Content */}
-                <div className="flex flex-grow flex-col p-6 sm:p-8">
-                  <h3 className="text-xl font-black tracking-tight text-zinc-900 transition-colors group-hover:text-zinc-700 sm:text-2xl">
-                    {project.title}
-                  </h3>
-                  <p className="mt-4 flex-grow text-[0.95rem] leading-relaxed text-zinc-600 line-clamp-4">
-                    {project.description}
-                  </p>
+                      {/* Content */}
+                      <div className="flex flex-grow flex-col p-6 sm:p-8">
+                        <h3 className="text-xl font-black tracking-tight text-zinc-900 transition-colors group-hover:text-zinc-700 sm:text-2xl">
+                          {project.title}
+                        </h3>
+                        <p className="mt-4 flex-grow text-[0.95rem] leading-relaxed text-zinc-600 line-clamp-4">
+                          {project.description}
+                        </p>
 
-                  <div className="mt-8 flex flex-wrap gap-2">
-                    {project.tags.slice(0, 4).map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-lg border border-zinc-100 bg-zinc-50 px-2.5 py-1 text-[0.7rem] font-bold text-zinc-500 transition-colors group-hover:border-zinc-200 group-hover:bg-zinc-100"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {project.tags.length > 4 && (
-                      <span className="rounded-lg px-2 py-1 text-[0.7rem] font-bold text-zinc-400">
-                        +{project.tags.length - 4} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+                        <div className="mt-8 flex flex-wrap gap-2">
+                          {project.tags.slice(0, 4).map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-lg border border-zinc-100 bg-zinc-50 px-2.5 py-1 text-[0.7rem] font-bold text-zinc-500 transition-colors group-hover:border-zinc-200 group-hover:bg-zinc-100"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                          {project.tags.length > 4 && (
+                            <span className="rounded-lg px-2 py-1 text-[0.7rem] font-bold text-zinc-400">
+                              +{project.tags.length - 4} more
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

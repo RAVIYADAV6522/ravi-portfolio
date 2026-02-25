@@ -114,3 +114,14 @@ body {
   background: radial-gradient(circle, rgba(255,190,60,0.2) 0%, transparent 70%);
   animation: glow 4s ease-in-out infinite;
 }
+
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.custom-animate-scroll {
+  animation: scroll-marquee 40s linear infinite;
+}
+
+
