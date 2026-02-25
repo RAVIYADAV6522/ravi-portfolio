@@ -76,13 +76,7 @@ export function HeroSection() {
                 />
               </div>
 
-              {/* Decorative floating badges */}
-              <div className="glass glass-dark absolute -right-2 top-8 flex h-14 w-14 items-center justify-center rounded-xl shadow-lg">
-                <span className="text-xl">🚀</span>
-              </div>
-              <div className="glass glass-dark absolute -left-4 bottom-12 flex h-16 w-16 items-center justify-center rounded-xl shadow-lg">
-                <span className="text-2xl">💻</span>
-              </div>
+            
             </div>
           </div>
         </div>
