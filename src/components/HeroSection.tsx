@@ -23,17 +23,19 @@ export function HeroSection() {
                 <span className="bg-gradient-to-r from-zinc-900 via-zinc-600 to-zinc-900 bg-clip-text text-transparent">
                   Ravi
                 </span>{" "}
-                <span className="inline-block animate-bounce shadow-sm">👋</span>
+                <span className="inline-block animate-bounce shadow-sm">
+                  👋
+                </span>
               </h1>
               <div className="space-y-4">
                 <p className="max-w-xl text-lg leading-relaxed text-zinc-600 sm:text-xl">
-                  I build AI-powered solutions and modern web applications. 
-                  Shipping clean, delightful products that solve real problems 
+                  I build AI-powered solutions and modern web applications.
+                  Shipping clean, delightful products that solve real problems
                   and scale to millions of users.
                 </p>
                 <p className="max-w-xl text-base leading-relaxed text-zinc-500">
-                  Full‑stack engineer specializing in machine learning, 
-                  cloud architecture, and developer experience.
+                  Full‑stack engineer specializing in machine learning, cloud
+                  architecture, and developer experience.
                 </p>
               </div>
             </div>
@@ -62,21 +64,19 @@ export function HeroSection() {
 
           <div className="flex flex-1 justify-center lg:justify-end">
             <div className="animate-float relative mt-4 lg:mt-0">
-              {/* Outer decorative ring */}
-              <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-indigo-500/10 via-emerald-500/10 to-rose-500/10 blur-2xl" />
-              
-              <div className="glass relative h-56 w-56 overflow-hidden rounded-full border-4 border-white shadow-xl sm:h-72 sm:w-72 lg:h-80 lg:w-80">
+              {/* Outer decorative ring (keep behind the portrait) */}
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-indigo-500/10 via-emerald-500/10 to-rose-500/10 blur-2xl z-0" />
+
+              <div className="glass relative z-10 h-56 w-56 overflow-hidden rounded-full border-4 border-white shadow-xl sm:h-72 sm:w-72 lg:h-80 lg:w-80">
                 <Image
                   src="/profile1.jpeg"
                   alt="Ravi Yadav"
                   fill
                   sizes="(max-width: 768px) 224px, 320px"
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
                 />
               </div>
-
-            
             </div>
           </div>
         </div>
