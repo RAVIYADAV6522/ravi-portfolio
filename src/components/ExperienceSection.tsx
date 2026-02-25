@@ -6,7 +6,7 @@ export function ExperienceSection() {
           Work Experience
         </h2>
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500">
-          Timeline
+          Dec 2025 - Jan 2026 
         </p>
       </div>
       <div className="mt-8 relative">
